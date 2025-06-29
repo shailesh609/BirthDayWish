@@ -645,3 +645,343 @@ img {
     box-shadow: 0 4px 24px #fbc2eb88;
     transform: scale(1.08);
 }
+
+/* iPhone and iOS specific optimizations */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(8px, env(safe-area-inset-left));
+    padding-right: max(8px, env(safe-area-inset-right));
+    padding-top: max(8px, env(safe-area-inset-top));
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+  }
+  
+  #music-toggle {
+    bottom: max(32px, env(safe-area-inset-bottom) + 16px);
+    right: max(32px, env(safe-area-inset-right) + 16px);
+  }
+}
+
+/* iPhone specific media queries */
+@media screen and (max-width: 428px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    padding: 8px;
+    min-height: 100vh;
+    height: auto;
+  }
+  
+  .birthdayCard {
+    width: 95vw;
+    max-width: 380px;
+    min-height: 220px;
+    padding: 16px 12px;
+    margin: 8px 0;
+    border-radius: 16px;
+  }
+  
+  .front-text, .inside-text, .wishes {
+    font-size: 0.95em;
+    padding: 8px 4px;
+    margin-bottom: 8px;
+  }
+  
+  .front-text h2, .inside-text h2 {
+    font-size: 1.2em;
+  }
+  
+  .wishes p {
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+  
+  .star, .cat, .ballon {
+    width: 50px;
+    height: auto;
+  }
+  
+  .cat {
+    height: 70px;
+    left: 4px;
+    bottom: 4px;
+  }
+  
+  .ballon {
+    height: 80px;
+    right: 12px;
+    top: 25px;
+  }
+  
+  .bdyboy {
+    height: 60px;
+    max-width: 70px;
+  }
+  
+  .img {
+    height: 140px;
+    margin-bottom: 6px;
+  }
+  
+  .plate {
+    bottom: 6px;
+  }
+  
+  .cake {
+    width: 55px;
+    height: 38px;
+  }
+  
+  .cake:before {
+    width: 45px;
+    height: 28px;
+  }
+  
+  .flame {
+    width: 11px;
+    height: 11px;
+    top: -70px;
+    left: 44px;
+  }
+  
+  #music-toggle {
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .confetti-piece {
+    width: 7px;
+    height: 7px;
+  }
+  
+  .floating-heart {
+    font-size: 1.4rem;
+  }
+}
+
+/* iPhone SE and smaller iPhones */
+@media screen and (max-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    padding: 6px;
+  }
+  
+  .birthdayCard {
+    width: 96vw;
+    max-width: 340px;
+    min-height: 200px;
+    padding: 14px 10px;
+    margin: 6px 0;
+  }
+  
+  .front-text, .inside-text, .wishes {
+    font-size: 0.9em;
+    padding: 6px 3px;
+    margin-bottom: 6px;
+  }
+  
+  .front-text h2, .inside-text h2 {
+    font-size: 1.1em;
+  }
+  
+  .wishes p {
+    font-size: 0.85em;
+    line-height: 1.4;
+  }
+  
+  .star, .cat, .ballon {
+    width: 40px;
+    height: auto;
+  }
+  
+  .cat {
+    height: 55px;
+    left: 3px;
+    bottom: 3px;
+  }
+  
+  .ballon {
+    height: 65px;
+    right: 8px;
+    top: 20px;
+  }
+  
+  .bdyboy {
+    height: 50px;
+    max-width: 60px;
+  }
+  
+  .img {
+    height: 120px;
+    margin-bottom: 4px;
+  }
+  
+  .plate {
+    bottom: 4px;
+  }
+  
+  .cake {
+    width: 45px;
+    height: 32px;
+  }
+  
+  .cake:before {
+    width: 37px;
+    height: 24px;
+  }
+  
+  .flame {
+    width: 9px;
+    height: 9px;
+    top: -60px;
+    left: 36px;
+  }
+  
+  #music-toggle {
+    bottom: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
+  
+  .confetti-piece {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .floating-heart {
+    font-size: 1.2rem;
+  }
+}
+
+/* iPhone landscape optimizations */
+@media screen and (max-height: 428px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  .container {
+    padding: 4px;
+    min-height: 100vh;
+  }
+  
+  .birthdayCard {
+    width: 85vw;
+    max-width: 450px;
+    min-height: 160px;
+    padding: 12px 16px;
+    margin: 4px 0;
+  }
+  
+  .img {
+    height: 90px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .bdyboy {
+    height: 50px;
+    max-width: 60px;
+    margin-top: 10px;
+  }
+  
+  .plate {
+    position: relative;
+    bottom: auto;
+    transform: none;
+    margin-left: 8px;
+  }
+  
+  .cake {
+    width: 40px;
+    height: 28px;
+  }
+  
+  .cake:before {
+    width: 32px;
+    height: 20px;
+  }
+  
+  .flame {
+    width: 8px;
+    height: 8px;
+    top: -50px;
+    left: 32px;
+  }
+  
+  .star, .cat, .ballon {
+    width: 35px;
+  }
+  
+  .cat {
+    height: 45px;
+  }
+  
+  .ballon {
+    height: 55px;
+  }
+  
+  .wishes p {
+    font-size: 0.8em;
+    line-height: 1.3;
+  }
+  
+  #music-toggle {
+    bottom: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .birthdayCard {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .birthdayCard:hover {
+    -webkit-transform: translateZ(0) rotateY(8deg) scale(1.03);
+    transform: translateZ(0) rotateY(8deg) scale(1.03);
+  }
+  
+  #music-toggle {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .confetti-piece {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .floating-heart {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Prevent iOS zoom on input focus */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* iOS status bar adjustments */
+@media screen and (max-width: 428px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  .container {
+    padding-top: env(safe-area-inset-top, 8px);
+    padding-bottom: env(safe-area-inset-bottom, 8px);
+  }
+}
