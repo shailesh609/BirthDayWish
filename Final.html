@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Birthday card</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -104,7 +107,12 @@
         const colors = ['#ffb6f9', '#fbc2eb', '#a6c1ee', '#f9f871', '#b5ead7', '#ffdac1'];
         return colors[Math.floor(Math.random() * colors.length)];
     }
-    for (let i = 0; i < 40; i++) {
+    
+    // Reduce confetti count on mobile for better performance
+    const isMobile = window.innerWidth <= 768;
+    const confettiCount = isMobile ? 20 : 40;
+    
+    for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti-piece';
         confetti.style.left = Math.random() * 100 + 'vw';
@@ -112,14 +120,17 @@
         confetti.style.animationDelay = (Math.random() * 3) + 's';
         document.body.appendChild(confetti);
     }
+    
     // Floating heart
     const heart = document.createElement('div');
     heart.className = 'floating-heart';
     heart.textContent = '💖';
     document.body.appendChild(heart);
-    // Bokeh particles
+    
+    // Bokeh particles - reduce count on mobile
     const bokehBg = document.getElementById('bokeh-bg');
-    for (let i = 0; i < 18; i++) {
+    const bokehCount = isMobile ? 10 : 18;
+    for (let i = 0; i < bokehCount; i++) {
         const b = document.createElement('div');
         b.className = 'bokeh';
         b.style.width = b.style.height = (40 + Math.random() * 60) + 'px';
@@ -128,15 +139,47 @@
         b.style.animationDelay = (Math.random() * 12) + 's';
         bokehBg.appendChild(b);
     }
-    // Music toggle
+    
+    // Music toggle with touch support
     const music = document.querySelector('audio') || document.getElementById('background-music');
     const btn = document.getElementById('music-toggle');
     if (music && btn) {
-        btn.onclick = function() {
-            if (music.paused) { music.play(); btn.textContent = '🔊'; }
-            else { music.pause(); btn.textContent = '🎵'; }
+        // Add touch event listeners for better mobile interaction
+        const toggleMusic = function(e) {
+            e.preventDefault();
+            if (music.paused) { 
+                music.play().then(() => {
+                    btn.textContent = '🔊';
+                }).catch(err => {
+                    console.log('Audio play failed:', err);
+                });
+            } else { 
+                music.pause(); 
+                btn.textContent = '🎵'; 
+            }
         };
+        
+        btn.addEventListener('click', toggleMusic);
+        btn.addEventListener('touchend', toggleMusic);
+        
+        // Auto-pause music when page becomes hidden (mobile optimization)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && !music.paused) {
+                music.pause();
+                btn.textContent = '🎵';
+            }
+        });
     }
+    
+    // Prevent zoom on double tap for mobile
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
     </script>
 </body>
 
