@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday card</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+            background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+            animation: bgMove 10s ease-in-out infinite alternate;
+        }
+        @keyframes bgMove {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(30deg); }
+        }
+        .birthdayCard {
+            box-shadow: 0 0 40px 10px #ffb6f9, 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            border: 3px solid #fff0fa;
+            border-radius: 20px;
+            animation: cardPop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+            position: relative;
+        }
+        @keyframes cardPop {
+            0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+            80% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .glow {
+            box-shadow: 0 0 30px 10px #ffe3fa, 0 0 60px 20px #fbc2eb;
+            border-radius: 20px;
+        }
+        .confetti-piece {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            opacity: 0.7;
+            z-index: 1000;
+            pointer-events: none;
+            animation: confetti-fall 3.5s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-30px) scale(1); }
+            100% { transform: translateY(100vh) scale(0.7); }
+        }
+        .floating-heart {
+            position: fixed;
+            font-size: 2rem;
+            left: 50%;
+            top: 80%;
+            opacity: 0.8;
+            animation: floatHeart 4s ease-in-out infinite;
+            z-index: 1001;
+            pointer-events: none;
+        }
+        @keyframes floatHeart {
+            0% { transform: translate(-50%, 0) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -60px) scale(1.2); opacity: 1; }
+            100% { transform: translate(-50%, 0) scale(1); opacity: 0.8; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bokeh-bg"></div>
+    <img src="ZUiY.gif" alt="stars" class="star">
+    <img src="5l03.gif" alt="ballon" class="ballon">
+    <button id="music-toggle" title="Toggle music">🎵</button>
+    <div class="container">
+        <div class="birthdayCard glow" id="mainCard">
+            <div class="cardFront">
+                <div class="img">
+                    <img src="6ob.gif" alt="confetti" class="confetti behind-penguin">
+                    <img src="penguin.jpg" alt="Brotherpic" class="bdyboy">
+                    <div class="plate">
+                        <div class="cake"></div>
+                        <div class="flame"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="cardInside">
+                <div class="wishes">
+                    <p>Dear Priya,</p>
+                    <p>Happy birthday!! I hope your day is filled with lots of love and laughter! May all of your
+                        birthday
+                        wishes come true.</p>
+                        <p class="name">~ Your Pookie</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <img src="4SHX.gif" alt="cat" class="cat">
+    <script src="background-music.js"></script>
+    <script>
+    // Confetti effect
+    function randomColor() {
+        const colors = ['#ffb6f9', '#fbc2eb', '#a6c1ee', '#f9f871', '#b5ead7', '#ffdac1'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+    for (let i = 0; i < 40; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-piece';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.background = randomColor();
+        confetti.style.animationDelay = (Math.random() * 3) + 's';
+        document.body.appendChild(confetti);
+    }
+    // Floating heart
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = '💖';
+    document.body.appendChild(heart);
+    // Bokeh particles
+    const bokehBg = document.getElementById('bokeh-bg');
+    for (let i = 0; i < 18; i++) {
+        const b = document.createElement('div');
+        b.className = 'bokeh';
+        b.style.width = b.style.height = (40 + Math.random() * 60) + 'px';
+        b.style.left = (Math.random() * 100) + 'vw';
+        b.style.bottom = (-10 + Math.random() * 60) + 'vh';
+        b.style.animationDelay = (Math.random() * 12) + 's';
+        bokehBg.appendChild(b);
+    }
+    // Music toggle
+    const music = document.querySelector('audio') || document.getElementById('background-music');
+    const btn = document.getElementById('music-toggle');
+    if (music && btn) {
+        btn.onclick = function() {
+            if (music.paused) { music.play(); btn.textContent = '🔊'; }
+            else { music.pause(); btn.textContent = '🎵'; }
+        };
+    }
+    </script>
+</body>
+
+</html>

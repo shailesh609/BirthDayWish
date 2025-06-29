@@ -1,0 +1,442 @@
+html, body {
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    width : 90px;
+}
+
+.star {
+    position: relative;
+    top: 20px;
+}
+
+.ballon {
+    position: fixed;
+    height: 180px;
+    top: 50px;
+    right: 20px;
+}
+
+.cat {
+    position: fixed;
+    left: 5px;
+    bottom: 1px;
+    height: 150px;
+}
+
+.container {
+    min-height: 100vh;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+}
+
+.birthdayCard {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18), 0 1.5px 6px rgba(0,0,0,0.08);
+    width: 320px;
+    max-width: 95vw;
+    min-height: 420px;
+    padding: 28px 18px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.birthdayCard:hover {
+    box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.28), 0 3px 12px rgba(0,0,0,0.12);
+    transform: rotateY(8deg) scale(1.03);
+}
+
+.cardFront, .cardInside {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    color: #4a235a;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.happy,
+.toyou {
+    position: relative;
+    font-family: didot;
+    text-align: center;
+    backface-visibility: hidden;
+    font-size: 30px;
+}
+
+.happy {
+    top: 198px;
+}
+
+.toyou {
+    top: 123px;
+}
+
+.bday {
+    position: relative;
+    font-family: arial;
+    font-size: 35px;
+    text-align: center;
+    top: 163px;
+}
+
+.wrap-deco, .wrap-decoTwo {
+    margin-bottom: 40px;
+}
+
+.decorations {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    /* border: 3px solid #333; */
+    /* border-radius: 50%; */
+}
+
+.decorations:before,
+.decorations:after,
+.decorationsTwo:before,
+.decorationsTwo:after,
+.decorationsThree:before,
+.decorationsThree:after {
+    content: "";
+    position: absolute;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.decorations:before {
+    border-top: 40px solid #f15bb5;
+    top: 297px;
+    left: 210px;
+    transform: rotate(-5deg);
+}
+
+.decorations:after {
+    border-top: 40px solid #f4d35e;
+    top: 288px;
+    left: 260px;
+    transform: rotate(-17deg);
+}
+
+.decorationsTwo:before {
+    border-top: 40px solid #00f5d4;
+    top: 268px;
+    left: 315px;
+    transform: rotate(-30deg);
+}
+
+.decorationsTwo:after,
+.decorationsThree:after {
+    border-top: 40px solid #9b5de5;
+    top: 238px;
+    left: 355px;
+    transform: rotate(-40deg);
+}
+
+.wrap-decoTwo {
+    transform: scaleX(-1);
+    position: absolute;
+    top: -230px;
+    left: 445px;
+}
+
+.decorationsThree:before {
+    border-top: 40px solid #00bbf9;
+    top: 268px;
+    left: 315px;
+    transform: rotate(-30deg);
+}
+
+.img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-top: 10px;
+    position: relative;
+    height: 180px;
+}
+
+.bdyboy {
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;
+    margin-bottom: 0;
+    max-width: 100px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
+    padding: 4px;
+}
+
+.plate {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.cake {
+    position: absolute;
+    overflow: hidden;
+    width: 100px;
+    height: 50px;
+    background-color: #f15bb5;
+    border-radius: 10px 10px 0 0;
+    top: -50px;
+    left: 15px;
+    box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+}
+
+.cake:before {
+    content: "";
+    position: absolute;
+    background-color: #432818;
+    width: 10px;
+    height: 20px;
+    top: 5px;
+    border-radius: 20px;
+    box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5, 40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
+}
+
+.plate:before {
+    content: "";
+    position: absolute;
+    background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+    width: 7px;
+    height: 25px;
+    top: -75px;
+    left: 61px;
+}
+
+.plate:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 5px;
+    background-color: #333;
+    top: -80px;
+    left: 64px;
+}
+
+
+.flame {
+    position: absolute;
+    background-color: #fb5607;
+    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+    transform: rotate(-45deg);
+    width: 15px;
+    height: 15px;
+    opacity: 0.7;
+    top: -93px;
+    left: 57px;
+}
+
+.front-text, .wishes {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 12px;
+    color: #4a235a;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.front-text h3, .inside-text h3, .front-text h2, .inside-text h2 {
+    margin: 8px 0;
+    font-size: 1.3em;
+    color: #7c1fa0;
+    font-family: 'Nunito', 'Arial', sans-serif;
+}
+
+.front-text h2, .inside-text h2 {
+    font-size: 2em;
+    color: #d72660;
+}
+
+.wishes p {
+    margin: 8px 0;
+    font-size: 1.05em;
+    line-height: 1.5;
+    color: #6a1b9a;
+    background: none;
+    font-family: 'Nunito', 'Arial', sans-serif;
+    text-align: left;
+}
+
+.name {
+    display: block;
+    margin-left: 0;
+    text-align: right;
+    font-style: italic;
+    color: #ad1457;
+    font-size: 1em;
+}
+
+.behind-penguin {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    opacity: 0.7;
+    max-width: 110px;
+}
+
+.confetti {
+    display: block;
+    margin: 0 auto 10px auto;
+    max-width: 80px;
+}
+
+.inside-text, .wishes {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.wishes {
+    margin: 10px 0 0 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 8px;
+  }
+  .birthdayCard, .cardFront, .cardInside {
+    width: 95vw;
+    max-width: 320px;
+    height: auto;
+    min-height: 220px;
+    padding: 10px 2vw;
+  }
+  .front-text, .inside-text, .wishes {
+    font-size: 1em;
+    padding: 8px 4px;
+    margin-bottom: 8px;
+  }
+  .front-text h2, .inside-text h2 {
+    font-size: 1.3em;
+  }
+  .star, .cat, .ballon {
+    width: 60px;
+    height: auto;
+  }
+  .cat {
+    height: 80px;
+  }
+  .ballon {
+    height: 90px;
+  }
+  .bdyboy {
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 2px;
+  }
+  .birthdayCard {
+    width: 98vw;
+    min-height: 220px;
+    padding: 10px 2vw;
+  }
+  .front-text, .inside-text, .wishes {
+    font-size: 0.95em;
+    padding: 6px 2px;
+    margin-bottom: 6px;
+  }
+  .front-text h2, .inside-text h2 {
+    font-size: 1em;
+  }
+  .star, .cat, .ballon {
+    width: 35px;
+    height: auto;
+  }
+  .cat {
+    height: 40px;
+  }
+  .ballon {
+    height: 45px;
+  }
+  .bdyboy {
+    height: 40px;
+  }
+  .img {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#bokeh-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -3;
+    pointer-events: none;
+    overflow: hidden;
+}
+.bokeh {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    background: radial-gradient(circle, #fff6, #fbc2eb99 60%, transparent 100%);
+    animation: bokeh-float 16s linear infinite;
+}
+@keyframes bokeh-float {
+    0% { transform: translateY(0) scale(1); opacity: 0.25; }
+    50% { opacity: 0.4; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0.15; }
+}
+
+#music-toggle {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 2000;
+    background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.7rem;
+    box-shadow: 0 2px 12px #a6c1ee55;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+#music-toggle:hover {
+    background: linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%);
+    box-shadow: 0 4px 24px #fbc2eb88;
+    transform: scale(1.08);
+}
